@@ -11,6 +11,6 @@ Here are some ideas to get you started:
 - 📫 How to reach me: You can catch me on Instagram @Otasowie...
 - ⚡ Fun fact: I like Theatre and the GYM...
 
-![cg](https://github.com/user-attachments/assets/818fb0d5-1573-47d6-b07e-3fd4d8b068a6)
+
 
  
