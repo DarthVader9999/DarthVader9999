@@ -11,6 +11,7 @@ Here are some ideas to get you started:
 - 📫 How to reach me: You can catch me on Instagram @Otasowie...
 - ⚡ Fun fact: I like Theatre and the GYM...
 
+![boardwalk-to-paradise](https://github.com/user-attachments/assets/6b28fab2-ab34-4167-b8b2-5714ad0d43ad)
 
 
  
