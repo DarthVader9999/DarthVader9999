@@ -1,0 +1,52 @@
+1)
+import csv
+
+grades_file = "grades.txt"
+results_file = "results.txt"
+
+with open(grades_file, 'r') as f:
+    reader = csv.reader(f, delimiter=' ')
+    data = list(reader)
+
+total_grades = 0
+num_students = 0
+above_average_count = 0
+
+for row in data:
+    name, grade = row
+    grade = int(grade)
+
+    total_grades += grade
+    num_students += 1
+
+average_grade = total_grades / num_students
+
+for row in data:
+    name, grade = row
+    grade = int(grade)
+
+    if grade > average_grade:
+        above_average_count += 1
+
+with open(results_file, 'w') as f:
+    f.write(f"Average Grade: {average_grade:.2f}\n")
+    f.write(f"Number of Students Above Average: {above_average_count}")
+
+2)
+def transform_data(numbers):
+  """Transforms a list of integers by squaring each element and calculating the sum.
+
+  Args:
+    numbers: A list of integers.
+
+  Returns:
+    A tuple containing the new list of squared values and the sum of the squared values.
+  """
+
+  squared_numbers = []
+  for number in numbers:
+    squared_numbers.append(number ** 2)
+
+  sum_of_squares = sum(squared_numbers)
+
+  return squared_numbers, sum_of_squares
