@@ -1,0 +1,254 @@
+1)
+# Initialize an empty list to store sales for each day of the week
+sales_data = []
+
+# Loop to get sales data for each day
+for day in range(1, 8):
+    sales = float(input(f"Enter sales for day {day}: "))
+    sales_data.append(sales)
+
+# Calculate total sales for the week
+total_sales = sum(sales_data)
+
+# Display the total sales
+print("Total sales for the week:", total_sales)
+2)
+import random
+
+# Generate a seven-digit lottery number
+lottery_numbers = []
+for i in range(7):
+    random_number = random.randint(0, 9)
+    lottery_numbers.append(random_number)
+
+# Display the lottery numbers
+print("Lottery numbers:")
+for number in lottery_numbers:
+    print(number, end=" ")
+3)
+# Initialize an empty list to store rainfall for each month
+rainfall_data = []
+
+# Loop to get rainfall data for each month
+for month in range(1, 13):
+    rainfall = float(input(f"Enter rainfall for month {month}: "))
+    rainfall_data.append(rainfall)
+
+# Calculate total rainfall for the year
+total_rainfall = sum(rainfall_data)
+
+# Calculate average monthly rainfall
+average_rainfall = total_rainfall / 12
+
+# Find the month with the highest rainfall
+highest_rainfall = max(rainfall_data)
+highest_rainfall_month = rainfall_data.index(highest_rainfall) + 1
+
+# Find the month with the lowest rainfall
+lowest_rainfall = min(rainfall_data)
+lowest_rainfall_month = rainfall_data.index(lowest_rainfall) + 1
+
+# Display the results
+print("Total rainfall for the year:", total_rainfall)
+print("Average monthly rainfall:", average_rainfall)
+print("Month with the highest rainfall:", highest_rainfall_month)
+print("Month with the lowest rainfall:", lowest_rainfall_month)
+4)
+# Initialize an empty list to store the numbers
+numbers = []
+
+# Loop to get 20 numbers from the user
+for i in range(20):
+    number = int(input(f"Enter number {i + 1}: "))
+    numbers.append(number)
+
+# Find the lowest, highest, total, and average of the numbers
+lowest_number = min(numbers)
+highest_number = max(numbers)
+total_numbers = sum(numbers)
+average_numbers = total_numbers / len(numbers)
+
+# Display the results
+print("Lowest number:", lowest_number)
+print("Highest number:", highest_number)
+print("Total of numbers:", total_numbers)
+print("Average of numbers:", average_numbers)
+5)
+def validate_charge_account(filename, account_number):
+    """Validates a charge account number by searching for it in a file."""
+
+    try:
+        with open(filename, 'r') as file:
+            valid_accounts = [int(line.strip()) for line in file]
+
+        if account_number in valid_accounts:
+            print(f"Account number {account_number} is valid.")
+        else:
+            print(f"Account number {account_number} is invalid.")
+
+    except FileNotFoundError:
+        print(f"File {filename} not found.")
+
+if __name__ == "__main__":
+    filename = "charge_accounts.txt"
+    account_number = int(input("Enter a charge account number: "))
+    validate_charge_account(filename, account_number)
+6)
+def display_greater_than(numbers, n):
+  """Displays numbers in the list that are greater than n.
+
+  Args:
+    numbers: A list of numbers.
+    n: A number to compare against.
+  """
+
+  for num in numbers:
+    if num > n:
+      print(num)
+7)
+def grade_driver_exam(correct_answers, student_answers_file):
+  """Grades a driver's license exam.
+
+  Args:
+    correct_answers: A list of correct answers.
+    student_answers_file: The path to the student's answers file.
+
+  Returns:
+    A tuple containing the number of correct answers, incorrect answers, and a list of incorrectly answered question numbers.
+  """
+
+  try:
+    with open(student_answers_file, 'r') as file:
+      student_answers = [line.strip().upper() for line in file]
+
+    if len(student_answers) != len(correct_answers):
+      raise ValueError("Incorrect number of answers in the file.")
+
+    correct_count = 0
+    incorrect_count = 0
+    incorrect_questions = []
+
+    for i, (student_answer, correct_answer) in enumerate(zip(student_answers, correct_answers)):
+      if student_answer == correct_answer:
+        correct_count += 1
+      else:
+        incorrect_count += 1
+        incorrect_questions.append(i + 1)
+
+    return correct_count, incorrect_count, incorrect_questions
+
+  except FileNotFoundError:
+    print(f"File {student_answers_file} not found.")
+    return 0, 0, []
+
+if __name__ == "__main__":
+  correct_answers = ["A", "C", "A", "A", "D", "B", "C", "A", "C", "B", "A", "D", "C", "A", "D", "C", "B", "B", "D", "A"]
+  student_answers_file = "student_answers.txt"
+
+  correct_count, incorrect_count, incorrect_questions = grade_driver_exam(correct_answers, student_answers_file)
+
+  print(f"Total correct answers: {correct_count}")
+  print(f"Total incorrect answers: {incorrect_count}")
+
+  if correct_count >= 15:
+    print("Congratulations! You passed the exam.")
+  else:
+    print("Unfortunately, you failed the exam.")
+
+  if incorrect_questions:
+    print("Incorrectly answered questions:", incorrect_questions)
+8)
+def is_popular_name(filename, name):
+  """Checks if a name is among the most popular in the file.
+
+  Args:
+    filename: The path to the file containing popular names.
+    name: The name to search for (case-insensitive).
+
+  Returns:
+    True if the name is found, False otherwise.
+  """
+
+  try:
+    with open(filename, 'r') as file:
+      popular_names = [line.strip().lower() for line in file]
+      name_to_find = name.strip().lower()
+      return name_to_find in popular_names
+
+  except FileNotFoundError:
+    print(f"File {filename} not found.")
+    return False
+
+if __name__ == "__main__":
+  filename = "popular_names.txt"  # Assuming the file is in the same directory
+  user_name = input("Enter a name: ")
+
+  if is_popular_name(filename, user_name):
+    print(f"{user_name} is among the most popular names.")
+  else:
+    print(f"{user_name} is not among the most popular names.")
+9)
+def analyze_population_data(filename):
+  """Analyzes population data from a file.
+
+  Args:
+    filename: The path to the file containing population data.
+
+  Returns:
+    A tuple containing the average annual change, year with greatest increase, and year with smallest increase.
+  """
+
+  try:
+    with open(filename, 'r') as file:
+      population_data = [int(line.strip()) for line in file]
+
+    # Calculate average annual change
+    annual_changes = [population_data[i] - population_data[i-1] for i in range(1, len(population_data))]
+    average_annual_change = sum(annual_changes) / len(annual_changes)
+
+    # Find year with greatest and smallest increase
+    greatest_increase_year = 1950 + annual_changes.index(max(annual_changes))
+    smallest_increase_year = 1950 + annual_changes.index(min(annual_changes))
+
+    return average_annual_change, greatest_increase_year, smallest_increase_year
+
+  except FileNotFoundError:
+    print(f"File {filename} not found.")
+    return None, None, None
+
+if __name__ == "__main__":
+  filename = "USPopulation.txt"  # Assuming the file is in the same directory
+  average_change, greatest_year, smallest_year = analyze_population_data(filename)
+
+  if average_change is not None:
+    print(f"Average annual change in population: {average_change:.2f} thousand")
+    print(f"Year with greatest increase: {greatest_year}")
+    print(f"Year with smallest increase: {smallest_year}")
+10)
+def count_world_series_wins(filename, team_name):
+  """Counts the number of World Series wins for a team.
+
+  Args:
+    filename: The path to the file containing World Series winners.
+    team_name: The name of the team to count wins for.
+
+  Returns:
+    The number of wins for the team.
+  """
+
+  try:
+    with open(filename, 'r') as file:
+      winning_teams = [line.strip().lower() for line in file]
+      team_name_lower = team_name.strip().lower()
+      return winning_teams.count(team_name_lower)
+
+  except FileNotFoundError:
+    print(f"File {filename} not found.")
+    return 0
+
+if __name__ == "__main__":
+  filename = "WorldSeriesWinners.txt"  # Assuming the file is in the same directory
+  team_name = input("Enter a team name: ")
+
+  wins = count_world_series_wins(filename, team_name)
+  print(f"{team_name} has won the World Series {wins} times.")
