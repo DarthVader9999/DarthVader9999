@@ -1,0 +1,240 @@
+1.
+def get_initials(full_name):
+    # Split the name into parts
+    name_parts = full_name.split()
+    # Get the first letter of each part and convert it to uppercase
+    initials = [part[0].upper() for part in name_parts]
+    # Join the initials with a dot and space
+    return '. '.join(initials) + '.'
+
+# Get user input
+full_name = input("Enter your first, middle, and last names: ")
+# Display the initials
+print(get_initials(full_name))
+2
+def sum_of_digits(digit_string):
+    # Initialize sum to 0
+    total = 0
+    # Loop through each character in the string
+    for char in digit_string:
+        # Convert character to integer and add to total
+        total += int(char)
+    return total
+
+# Get user input
+user_input = input("Enter a series of single-digit numbers: ")
+# Calculate and display the sum
+result = sum_of_digits(user_input)
+print(f"The sum of the digits is: {result}")
+3.
+def convert_date(date_string):
+    # Split the input string by '/'
+    month, day, year = date_string.split('/')
+    
+    # Create a list of month names
+    month_names = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ]
+    
+    # Convert month from string to integer
+    month_index = int(month) - 1  # Subtract 1 for zero-based index
+    
+    # Format the date
+    formatted_date = f"{month_names[month_index]} {int(day)}, {year}"
+    return formatted_date
+
+# Get user input
+user_input = input("Enter a date in mm/dd/yyyy format: ")
+# Convert and display the formatted date
+result = convert_date(user_input)
+print(result)
+4.
+# Mapping of letters to numbers based on telephone keypad
+letter_to_number = {
+    'A': '2', 'B': '2', 'C': '2',
+    'D': '3', 'E': '3', 'F': '3',
+    'G': '4', 'H': '4', 'I': '4',
+    'J': '5', 'K': '5', 'L': '5',
+    'M': '6', 'N': '6', 'O': '6',
+    'P': '7', 'Q': '7', 'R': '7', 'S': '7',
+    'T': '8', 'U': '8', 'V': '8',
+    'W': '9', 'X': '9', 'Y': '9', 'Z': '9'
+}
+
+def convert_phone_number(phone_number):
+    # Initialize an empty result string
+    numeric_phone_number = ""
+    # Process each character in the input
+    for char in phone_number:
+        if char.isalpha():  # Check if the character is a letter
+            numeric_phone_number += letter_to_number[char.upper()]  # Convert to uppercase and map
+        else:
+            numeric_phone_number += char  # Keep numbers and dashes as is
+    return numeric_phone_number
+
+# Get user input
+user_input = input("Enter a 10-character telephone number in the format XXX-XXX-XXXX: ")
+# Validate the input length
+if len(user_input) == 14 and user_input[3] == '-' and user_input[7] == '-':
+    # Convert and display the numeric telephone number
+    converted_number = convert_phone_number(user_input)
+    print(converted_number)
+else:
+    print("Invalid format. Please enter in the format XXX-XXX-XXXX.")
+5.
+def calculate_average_words_per_sentence(filename):
+    try:
+        with open(filename, 'r') as file:
+            sentences = file.readlines()  # Read all lines into a list
+
+        total_words = 0
+        total_sentences = len(sentences)
+
+        for sentence in sentences:
+            words = sentence.split()  # Split the sentence into words
+            total_words += len(words)  # Count the number of words
+
+        # Calculate average words per sentence
+        if total_sentences > 0:
+            average = total_words / total_sentences
+        else:
+            average = 0
+
+        return average
+
+    except FileNotFoundError:
+        print(f"The file {filename} was not found.")
+        return None
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
+
+# Specify the filename
+filename = 'Chapter 08/text.txt'  # Adjust path as necessary
+
+# Calculate and display the average
+average_words = calculate_average_words_per_sentence(filename)
+if average_words is not None:
+    print(f"The average number of words per sentence is: {average_words:.2f}")
+6.
+def analyze_text_file(filename):
+    try:
+        with open(filename, 'r') as file:
+            content = file.read()  # Read the entire file content
+
+        # Initialize counters
+        uppercase_count = 0
+        lowercase_count = 0
+        digit_count = 0
+        whitespace_count = 0
+
+        # Count characters
+        for char in content:
+            if char.isupper():
+                uppercase_count += 1
+            elif char.islower():
+                lowercase_count += 1
+            elif char.isdigit():
+                digit_count += 1
+            elif char.isspace():
+                whitespace_count += 1
+
+        return (uppercase_count, lowercase_count, digit_count, whitespace_count)
+
+    except FileNotFoundError:
+        print(f"The file {filename} was not found.")
+        return None
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
+
+# Specify the filename
+filename = 'Chapter 08/text.txt'  # Adjust path as necessary
+
+# Analyze the text file and display results
+results = analyze_text_file(filename)
+if results is not None:
+    uppercase_count, lowercase_count, digit_count, whitespace_count = results
+    print(f"Uppercase letters: {uppercase_count}")
+    print(f"Lowercase letters: {lowercase_count}")
+    print(f"Digits: {digit_count}")
+    print(f"Whitespace characters: {whitespace_count}")
+7.
+def capitalize_sentences(input_string):
+    # Split the string into sentences based on '.', '!', and '?'
+    sentences = input_string.split('. ')
+    capitalized_sentences = []
+
+    for sentence in sentences:
+        # Strip leading whitespace and capitalize the first character
+        if sentence:  # Check if the sentence is not empty
+            capitalized_sentence = sentence[0].upper() + sentence[1:]
+            capitalized_sentences.append(capitalized_sentence)
+
+    # Join the sentences back together
+    return '. '.join(capitalized_sentences)
+
+# Get user input
+user_input = input("Enter a string: ")
+# Capitalize sentences and display the result
+result = capitalize_sentences(user_input)
+print(result)
+8.
+def count_vowels(input_string):
+    # Define a set of vowels
+    vowels = "aeiouAEIOU"
+    count = 0
+    
+    # Count vowels in the input string
+    for char in input_string:
+        if char in vowels:
+            count += 1
+            
+    return count
+
+def count_consonants(input_string):
+    # Define a set of consonants
+    consonants = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"
+    count = 0
+    
+    # Count consonants in the input string
+    for char in input_string:
+        if char in consonants:
+            count += 1
+            
+    return count
+
+# Get user input
+user_input = input("Enter a string: ")
+
+# Calculate and display the results
+vowel_count = count_vowels(user_input)
+consonant_count = count_consonants(user_input)
+
+print(f"Number of vowels: {vowel_count}")
+print(f"Number of consonants: {consonant_count}")
+9.
+def most_frequent_character(input_string):
+    # Create a dictionary to count occurrences of each character
+    char_count = {}
+
+    # Count each character in the string
+    for char in input_string:
+        if char in char_count:
+            char_count[char] += 1
+        else:
+            char_count[char] = 1
+
+    # Find the character with the maximum count
+    most_frequent = max(char_count, key=char_count.get)
+    max_count = char_count[most_frequent]
+
+    return most_frequent, max_count
+
+# Get user input
+user_input = input("Enter a string: ")
+
+# Find and display the most frequent character
+character, count = most_frequent_character(user_input)
+print(f"The character '{character}' appears most frequently: {count} times.")
