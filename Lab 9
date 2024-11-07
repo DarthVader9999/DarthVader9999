@@ -1,0 +1,317 @@
+1.
+# Define the dictionaries
+course_rooms = {
+    "CS101": "3004",
+    "CS102": "4501",
+    "CS103": "6755",
+    "NT110": "1244",
+    "CM241": "1411"
+}
+
+course_instructors = {
+    "CS101": "Haynes",
+    "CS102": "Alvarado",
+    "CS103": "Rich",
+    "NT110": "Burke",
+    "CM241": "Lee"
+}
+
+course_meeting_times = {
+    "CS101": "8:00 a.m.",
+    "CS102": "9:00 a.m.",
+    "CS103": "10:00 a.m.",
+    "NT110": "11:00 a.m.",
+    "CM241": "1:00 p.m."
+}
+
+# Function to display course information
+def get_course_info(course_number):
+    room = course_rooms.get(course_number)
+    instructor = course_instructors.get(course_number)
+    meeting_time = course_meeting_times.get(course_number)
+
+    if room and instructor and meeting_time:
+        print(f"Course Number: {course_number}")
+        print(f"Room Number: {room}")
+        print(f"Instructor: {instructor}")
+        print(f"Meeting Time: {meeting_time}")
+    else:
+        print("Course number not found.")
+
+# Main program loop
+def main():
+    course_number = input("Enter a course number (e.g., CS101): ")
+    get_course_info(course_number)
+
+# Run the program
+if __name__ == "__main__":
+    main(
+2.
+import random
+
+# Dictionary of U.S. states and their capitals
+states_and_capitals = {
+    'Alabama': 'Montgomery',
+    'Alaska': 'Juneau',
+    'Arizona': 'Phoenix',
+    'Arkansas': 'Little Rock',
+    'California': 'Sacramento',
+    'Colorado': 'Denver',
+    'Connecticut': 'Hartford',
+    'Delaware': 'Dover',
+    'Florida': 'Tallahassee',
+    'Georgia': 'Atlanta',
+    'Hawaii': 'Honolulu',
+    'Idaho': 'Boise',
+    'Illinois': 'Springfield',
+    'Indiana': 'Indianapolis',
+    'Iowa': 'Des Moines',
+    'Kansas': 'Topeka',
+    'Kentucky': 'Frankfort',
+    'Louisiana': 'Baton Rouge',
+    'Maine': 'Augusta',
+    'Maryland': 'Annapolis',
+    'Massachusetts': 'Boston',
+    'Michigan': 'Lansing',
+    'Minnesota': 'Saint Paul',
+    'Mississippi': 'Jackson',
+    'Missouri': 'Jefferson City',
+    'Montana': 'Helena',
+    'Nebraska': 'Lincoln',
+    'Nevada': 'Carson City',
+    'New Hampshire': 'Concord',
+    'New Jersey': 'Trenton',
+    'New Mexico': 'Santa Fe',
+    'New York': 'Albany',
+    'North Carolina': 'Raleigh',
+    'North Dakota': 'Bismarck'
+    'Oklahoma': 'Oklahoma City',
+    'Oregon': 'Salem',
+    'Pennsylvania': 'Harrisburg',
+    'Rhode Island': 'Providence',
+    'South Carolina': 'Columbia',
+    'South Dakota': 'Pierre',
+    'Tennessee': 'Nashville',
+    'Texas': 'Austin',
+    'Utah': 'Salt Lake City',
+    'Vermont': 'Montpelier',
+    'Virginia': 'Richmond',
+    'Washington': 'Olympia',
+    'West Virginia': 'Charleston',
+    'Wisconsin': 'Madison',
+    'Wyoming': 'Cheyenne'
+}
+
+# Function to quiz the user
+def quiz_user():
+    correct_count = 0
+    incorrect_count = 0
+    states = list(states_and_capitals.keys())
+    
+    print("Welcome to the U.S. States and Capitals Quiz!")
+    print("Type 'exit' to quit the quiz at any time.")
+    
+    for _ in range(10):  # Quiz the user 10 times
+        state = random.choice(states)
+        capital = states_and_capitals[state]
+        
+        user_answer = input(f"What is the capital of {state}? ")
+        
+        if user_answer.lower() == 'exit':
+            break
+        elif user_answer.title() == capital:
+            print("Correct!")
+            correct_count += 1
+        else:
+            print(f"Incorrect. The capital of {state} is {capital}.")
+            incorrect_count += 1
+    
+    print(f"You got {correct_count} correct and {incorrect_count} incorrect.")
+
+# Run the quiz
+if __name__ == "__main__":
+    quiz_user()
+3.
+# Encryption Program
+
+# Define the codes for each letter
+codes = {
+    'A': '%', 'a': '9',
+    'B': '@', 'b': '#',
+    'C': '&', 'c': '8',
+    'D': '!', 'd': '7',
+    'E': '$', 'e': '6',
+    'F': '^', 'f': '5',
+    'G': '*', 'g': '4',
+    'H': '(', 'h': '3',
+    'I': ')', 'i': '2',
+    'J': '-', 'j': '1',
+    'K': '=', 'k': '0',
+    'L': '+', 'l': '<',
+    'M': '{', 'm': '}',
+    'N': '[', 'n': ']',
+    'O': ':', 'o': ';',
+    'P': '"', 'p': "'",
+    'Q': '<', 'q': '>',
+    'R': '?', 'r': '/',
+    'S': ',', 's': '.',
+    'T': '~', 't': '`',
+    'U': '>', 'u': '<',
+    'V': '^', 'v': '|',
+    'W': '!', 'w': '#',
+    'X': '@', 'x': '$',
+    'Y': '%', 'y': '^',
+    'Z': '&', 'z': '*'
+}
+
+def encrypt_file(input_filename, output_filename):
+    with open(input_filename, 'r') as infile, open(output_filename, 'w') as outfile:
+        for line in infile:
+            encrypted_line = ''.join(codes.get(char, char) for char in line)
+            outfile.write(encrypted_line)
+
+# Example usage
+if __name__ == "__main__":
+    encrypt_file('input.txt', 'encrypted.txt')
+4.
+import string
+
+def get_unique_words(filename):
+    unique_words = set()
+    
+    with open(filename, 'r') as file:
+        for line in file:
+            # Normalize the line: convert to lowercase and remove punctuation
+            line = line.lower()
+            line = line.translate(str.maketrans('', '', string.punctuation))
+            words = line.split()
+            unique_words.update(words)
+    
+    return sorted(unique_words)  # Return a sorted list of unique words
+
+# Example usage
+if __name__ == "__main__":
+    filename = input("Enter the name of the text file (e.g., 'input.txt'): ")
+    try:
+        unique_words = get_unique_words(filename)
+        print("Unique words found in the file:")
+        for word in unique_words:
+            print(word)
+    except FileNotFoundError:
+        print(f"The file '{filename}' was not found.")
+5.
+import string
+
+def count_word_frequency(filename):
+    word_count = {}
+    
+    with open(filename, 'r') as file:
+        for line in file:
+            # Normalize the line: convert to lowercase and remove punctuation
+            line = line.lower()
+            line = line.translate(str.maketrans('', '', string.punctuation))
+            words = line.split()
+            
+            for word in words:
+                if word in word_count:
+                    word_count[word] += 1
+                else:
+                    word_count[word] = 1
+    
+    return word_count
+
+def display_word_frequencies(word_count):
+    for word, count in sorted(word_count.items()):
+        print(f"{word}: {count}")
+
+def write_frequencies_to_file(word_count, output_filename):
+    with open(output_filename, 'w') as outfile:
+        for word, count in sorted(word_count.items()):
+            outfile.write(f"{word}: {count}\n")
+
+# Example usage
+if __name__ == "__main__":
+    input_filename = input("Enter the name of the text file (e.g., 'input.txt'): ")
+    
+    try:
+        word_count = count_word_frequency(input_filename)
+        
+        # Display the word frequencies
+        display_word_frequencies(word_count)
+        
+        # Option to write to a file
+        output_choice = input("Would you like to write the frequencies to a file? (yes/no): ").strip().lower()
+        if output_choice == 'yes':
+            output_filename = input("Enter the name of the output file (e.g., 'output.txt'): ")
+            write_frequencies_to_file(word_count, output_filename)
+            print(f"Frequencies written to '{output_filename}'")
+    except FileNotFoundError:
+        print(f"The file '{input_filename}' was not found.")
+6.
+import string
+
+def get_unique_words(filename):
+    unique_words = set()
+    
+    with open(filename, 'r') as file:
+        for line in file:
+            # Normalize the line: convert to lowercase and remove punctuation
+            line = line.lower()
+            line = line.translate(str.maketrans('', '', string.punctuation))
+            words = line.split()
+            unique_words.update(words)
+    
+    return unique_words
+
+def compare_files(file1, file2):
+    words_file1 = get_unique_words(file1)
+    words_file2 = get_unique_words(file2)
+
+    # Unique words in both files
+    all_unique_words = words_file1.union(words_file2)
+    
+    # Words that appear in both files
+    common_words = words_file1.intersection(words_file2)
+    
+    # Words in file1 but not in file2
+    unique_to_file1 = words_file1.difference(words_file2)
+    
+    # Words in file2 but not in file1
+    unique_to_file2 = words_file2.difference(words_file1)
+    
+    # Words in either file but not both
+    exclusive_words = words_file1.symmetric_difference(words_file2)
+    
+    return {
+        'all_unique_words': all_unique_words,
+        'common_words': common_words,
+        'unique_to_file1': unique_to_file1,
+        'unique_to_file2': unique_to_file2,
+        'exclusive_words': exclusive_words,
+    }
+
+# Example usage
+if __name__ == "__main__":
+    file1 = input("Enter the name of the first text file (e.g., 'file1.txt'): ")
+    file2 = input("Enter the name of the second text file (e.g., 'file2.txt'): ")
+    
+    try:
+        results = compare_files(file1, file2)
+        
+        print("\nUnique words in both files:")
+        print(sorted(results['all_unique_words']))
+        
+        print("\nWords that appear in both files:")
+        print(sorted(results['common_words']))
+        
+        print("\nWords that appear in the first file but not the second:")
+        print(sorted(results['unique_to_file1']))
+        
+        print("\nWords that appear in the second file but not the first:")
+        print(sorted(results['unique_to_file2']))
+        
+        print("\nWords that appear in either the first or second file, but not both:")
+        print(sorted(results['exclusive_words']))
+    
+    except FileNotFoundError as e:
+        print(f"Error: {e}")
