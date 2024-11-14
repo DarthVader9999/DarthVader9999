@@ -1,0 +1,300 @@
+1.
+class Pet:
+    def __init__(self, name='', animal_type='', age=0):
+        self.__name = name
+        self.__animal_type = animal_type
+        self.__age = age
+
+    def set_name(self, name):
+        self.__name = name
+
+    def set_animal_type(self, animal_type):
+        self.__animal_type = animal_type
+
+    def set_age(self, age):
+        self.__age = age
+
+    def get_name(self):
+        return self.__name
+
+    def get_animal_type(self):
+        return self.__animal_type
+
+    def get_age(self):
+        return self.__age
+
+# Program to interact with the user
+def main():
+    pet = Pet()
+
+    # Collecting pet details from the user
+    name = input("Enter your pet's name: ")
+    animal_type = input("Enter your pet's type (e.g., Dog, Cat, Bird): ")
+    age = int(input("Enter your pet's age: "))
+
+    # Setting the attributes using the setter methods
+    pet.set_name(name)
+    pet.set_animal_type(animal_type)
+    pet.set_age(age)
+
+    # Displaying the pet's details using the accessor methods
+    print("\nPet Details:")
+    print("Name:", pet.get_name())
+    print("Type:", pet.get_animal_type())
+    print("Age:", pet.get_age())
+
+if __name__ == "__main__":
+    main()
+2.
+class Car:
+    def __init__(self, year_model, make):
+        self.__year_model = year_model
+        self.__make = make
+        self.__speed = 0  # Initial speed is set to 0
+
+    def accelerate(self):
+        self.__speed += 5  # Increase speed by 5
+
+    def brake(self):
+        self.__speed -= 5  # Decrease speed by 5
+        if self.__speed < 0:  # Ensure speed doesn't go below 0
+            self.__speed = 0
+
+    def get_speed(self):
+        return self.__speed  # Return current speed
+
+# Program to test the Car class
+def main():
+    # Create a Car object
+    year_model = input("Enter the car's year model: ")
+    make = input("Enter the car's make: ")
+    car = Car(year_model, make)
+
+    # Accelerate the car 5 times
+    print("\nAccelerating the car:")
+    for _ in range(5):
+        car.accelerate()
+        print("Current speed:", car.get_speed(), "mph")
+
+    # Brake the car 5 times
+    print("\nBraking the car:")
+    for _ in range(5):
+        car.brake()
+        print("Current speed:", car.get_speed(), "mph")
+
+if __name__ == "__main__":
+    main()
+3.
+class Person:
+    def __init__(self, name='', address='', age=0, phone_number=''):
+        self.__name = name
+        self.__address = address
+        self.__age = age
+        self.__phone_number = phone_number
+
+    # Mutator methods
+    def set_name(self, name):
+        self.__name = name
+
+    def set_address(self, address):
+        self.__address = address
+
+    def set_age(self, age):
+        self.__age = age
+
+    def set_phone_number(self, phone_number):
+        self.__phone_number = phone_number
+
+    # Accessor methods
+    def get_name(self):
+        return self.__name
+
+    def get_address(self):
+        return self.__address
+
+    def get_age(self):
+        return self.__age
+
+    def get_phone_number(self):
+        return self.__phone_number
+
+# Program to create instances of the Person class
+def main():
+    # Create three Person instances with fictional data
+    person1 = Person("Alice Johnson", "123 Maple St, Springfield", 30, "555-1234")
+    person2 = Person("Bob Smith", "456 Oak St, Metropolis", 25, "555-5678")
+    person3 = Person("Charlie Brown", "789 Pine St, Gotham", 40, "555-8765")
+
+    # Display the information for each person
+    for person in [person1, person2, person3]:
+        print("Name:", person.get_name())
+        print("Address:", person.get_address())
+        print("Age:", person.get_age())
+        print("Phone Number:", person.get_phone_number())
+        print()  # Blank line for readability
+
+if __name__ == "__main__":
+    main()
+4.
+class Employee:
+    def __init__(self, name='', id_number='', department='', job_title=''):
+        self.__name = name
+        self.__id_number = id_number
+        self.__department = department
+        self.__job_title = job_title
+
+    # Accessor methods
+    def get_name(self):
+        return self.__name
+
+    def get_id_number(self):
+        return self.__id_number
+
+    def get_department(self):
+        return self.__department
+
+    def get_job_title(self):
+        return self.__job_title
+
+# Program to create Employee objects and display their data
+def main():
+    # Create three Employee objects with the given data
+    employee1 = Employee("Susan Meyers", "47899", "Accounting", "Vice President")
+    employee2 = Employee("Mark Jores", "39119", "IT", "Programmer")
+    employee3 = Employee("Joy Rogers", "81774", "Manufacturing", "Engineer")
+
+    # Display the data for each employee
+    for employee in [employee1, employee2, employee3]:
+        print("Name:", employee.get_name())
+        print("ID Number:", employee.get_id_number())
+        print("Department:", employee.get_department())
+        print("Job Title:", employee.get_job_title())
+        print()  # Blank line for readability
+
+if __name__ == "__main__":
+    main()
+5.
+class RetailItem:
+    def __init__(self, description='', units_in_inventory=0, price=0.0):
+        self.__description = description
+        self.__units_in_inventory = units_in_inventory
+        self.__price = price
+
+    # Accessor methods
+    def get_description(self):
+        return self.__description
+
+    def get_units_in_inventory(self):
+        return self.__units_in_inventory
+
+    def get_price(self):
+        return self.__price
+
+# Program to create RetailItem objects and display their data
+def main():
+    # Create three RetailItem objects with the given data
+    item1 = RetailItem("Jacket", 12, 59.95)
+    item2 = RetailItem("Designer Jeans", 40, 34.95)
+    item3 = RetailItem("Shirt", 20, 24.95)
+
+    # Display the data for each retail item
+    for item in [item1, item2, item3]:
+        print("Description:", item.get_description())
+        print("Units in Inventory:", item.get_units_in_inventory())
+        print("Price: ${:.2f}".format(item.get_price()))
+        print()  # Blank line for readability
+
+if __name__ == "__main__":
+    main()
+6.class Patient:
+    def __init__(self, first_name, middle_name, last_name, address, city, state, zip_code, phone_number, emergency_contact_name, emergency_contact_phone):
+        self.__first_name = first_name
+        self.__middle_name = middle_name
+        self.__last_name = last_name
+        self.__address = address
+        self.__city = city
+        self.__state = state
+        self.__zip_code = zip_code
+        self.__phone_number = phone_number
+        self.__emergency_contact_name = emergency_contact_name
+        self.__emergency_contact_phone = emergency_contact_phone
+
+    # Accessor methods
+    def get_full_name(self):
+        return f"{self.__first_name} {self.__middle_name} {self.__last_name}"
+
+    def get_address(self):
+        return f"{self.__address}, {self.__city}, {self.__state} {self.__zip_code}"
+
+    def get_phone_number(self):
+        return self.__phone_number
+
+    def get_emergency_contact(self):
+        return f"{self.__emergency_contact_name}: {self.__emergency_contact_phone}"
+
+class Procedure:
+    def __init__(self, name, date, practitioner, charges):
+        self.__name = name
+        self.__date = date
+        self.__practitioner = practitioner
+        self.__charges = charges
+
+    # Accessor methods
+    def get_name(self):
+        return self.__name
+
+    def get_date(self):
+        return self.__date
+
+    def get_practitioner(self):
+        return self.__practitioner
+
+    def get_charges(self):
+        return self.__charges
+
+# Program to create instances and display data
+def main():
+    # Create a Patient instance with sample data
+    patient = Patient(
+        first_name="John",
+        middle_name="A.",
+        last_name="Doe",
+        address="123 Elm St",
+        city="Springfield",
+        state="IL",
+        zip_code="62701",
+        phone_number="555-0123",
+        emergency_contact_name="Jane Doe",
+        emergency_contact_phone="555-9876"
+    )
+
+    # Create three Procedure instances
+    procedure1 = Procedure("Physical Exam", "2024-11-14", "Dr. Irvine", 250.00)
+    procedure2 = Procedure("X-ray", "2024-11-14", "Dr. Jamison", 500.00)
+    procedure3 = Procedure("Blood test", "2024-11-14", "Dr. Smith", 200.00)
+
+    # Display patient information
+    print("Patient Information:")
+    print("Name:", patient.get_full_name())
+    print("Address:", patient.get_address())
+    print("Phone Number:", patient.get_phone_number())
+    print("Emergency Contact:", patient.get_emergency_contact())
+    print()
+
+    # Display procedure information
+    procedures = [procedure1, procedure2, procedure3]
+    total_charges = 0.0
+    print("Procedures:")
+    for procedure in procedures:
+        total_charges += procedure.get_charges()
+        print(f"Procedure: {procedure.get_name()}")
+        print(f"Date: {procedure.get_date()}")
+        print(f"Practitioner: {procedure.get_practitioner()}")
+        print(f"Charge: ${procedure.get_charges():.2f}")
+        print()
+
+    # Display total charges
+    print("Total Charges: ${:.2f}".format(total_charges))
+
+if __name__ == "__main__":
+    main()
