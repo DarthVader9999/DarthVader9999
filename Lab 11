@@ -1,0 +1,111 @@
+1)
+class Employee:
+    def __init__(self, name, number):
+        self.__name = name
+        self.__number = number
+
+    def set_name(self, name):
+        self.__name = name
+
+    def set_number(self, number):
+        self.__number = number
+
+    def get_name(self):
+        return self.__name
+
+    def get_number(self):
+        return self.__number
+
+
+class ProductionWorker(Employee):
+    def __init__(self, name, number, shift, pay_rate):
+        super().__init__(name, number)
+        self.__shift = shift
+        self.__pay_rate = pay_rate
+
+    def set_shift(self, shift):
+        self.__shift = shift
+
+    def set_pay_rate(self, pay_rate):
+        self.__pay_rate = pay_rate
+
+    def get_shift(self):
+        return self.__shift
+
+    def get_pay_rate(self):
+        return self.__pay_rate
+2)
+class Employee:
+    def __init__(self, name, number):
+        self.__name = name
+        self.__number = number
+
+    def set_name(self, name):
+        self.__name = name
+
+    def set_number(self, number):
+        self.__number = number
+
+    def get_name(self):
+        return self.__name
+
+    def get_number(self):
+        return self.__number
+
+
+class ShiftSupervisor(Employee):
+    def __init__(self, name, number, salary, bonus):
+        super().__init__(name, number)
+        self.__salary = salary
+        self.__bonus = bonus
+
+    def set_salary(self, salary):
+        self.__salary = salary
+
+    def set_bonus(self, bonus):
+        self.__bonus = bonus
+
+    def get_salary(self):
+        return self.__salary
+
+    def get_bonus(self):
+        return self.__bonus
+
+
+def main():
+    supervisor = ShiftSupervisor("Alice Johnson", 12345, 50000, 10000)
+
+    print("Employee Information:")
+    print("Name:", supervisor.get_name())
+    print("Number:", supervisor.get_number())
+    print("Salary:", supervisor.get_salary())
+    print("Bonus:", supervisor.get_bonus())
+
+if __name__ == "__main__":
+    main()
+3)
+class Person:
+    def __init__(self, name, address, phone_number):
+        self.name = name
+        self.address = address
+        self.phone_number = phone_number
+
+class Customer(Person):
+    def __init__(self, name, address, phone_number, customer_number, mailing_list):
+        super().__init__(name, address, phone_number)
+        self.customer_number = customer_number
+        self.mailing_list = mailing_list
+
+def main():
+    customer = Customer("John Doe", "123 Main St", "555-1212", 1001, True)
+
+    print("Customer Information:")
+    print("Name:", customer.name)
+    print("Address:", customer.address)
+    print("Phone Number:", customer.phone_number)
+    print("Customer Number:", customer.customer_number)
+    print("Mailing List:", customer.mailing_list)
+
+if __name__ == "__main__":
+    main()
+4)
