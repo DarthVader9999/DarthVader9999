@@ -1,0 +1,57 @@
+1)
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def set_width(self, width):
+        self.width = width
+
+    def get_width(self):
+        return self.width
+
+    def set_height(self, height):
+        self.height = height
+
+    def get_height(self):
+        return self.height
+
+    def calculate_perimeter(self):
+        return 2 * (self.width + self.height)
+
+    def calculate_area(self):
+        return self.width * self.height
+
+    def display(self):
+        print("Width:", self.width)
+        print("Height:", self.height)
+        print("Area:", self.calculate_area())
+        print("Perimeter:", self.calculate_perimeter())
+
+if __name__ == "__main__":
+    rect = Rectangle(5, 10)
+    rect.display ()
+
+2)
+def count_frequencies(words):
+  """Counts the frequency of each word in a list of words.
+
+  Args:
+    words: A list of words.
+
+  Returns:
+    A dictionary where keys are words and values are their frequencies.
+  """
+
+  frequency_dict = {}
+  for word in words:
+    if word in frequency_dict:
+      frequency_dict[word] += 1
+    else:
+      frequency_dict[word] = 1
+  return frequency_dict
+
+# Example usage
+input_strings = ["apple", "banana", "apple", "orange", "banana", "apple"]
+frequency_count = count_frequencies(input_strings)
+print("Frequency Count:", frequency_count)
