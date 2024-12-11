@@ -1,0 +1,138 @@
+1.
+def print_numbers(n):
+  """Recursively prints numbers from 1 to n.
+
+  Args:
+    n: The upper limit of the numbers to print.
+  """
+
+  if n > 0:
+    print_numbers(n - 1)
+    print(n)
+
+# Example usage:
+print_numbers(5)
+
+2.
+def recursive_multiply(x, y):
+  """Recursively calculates the product of two positive integers x and y.
+
+  Args:
+    x: The first integer.
+    y: The second integer.
+
+  Returns:
+    The product of x and y.
+  """
+
+  if y == 0:
+    return 0  # Base case: any number multiplied by 0 is 0
+  else:
+    return x + recursive_multiply(x, y - 1)  # Recursive case: add x to the product of x and (y-1)
+
+# Example usage:
+product = recursive_multiply(3, 7)
+print(f"The product of 3 and 7 is: {product}")
+
+3.
+def print_asterisks(n):
+  """Recursively prints lines of asterisks, increasing the number of asterisks in each line.
+
+  Args:
+    n: The number of lines to print.
+  """
+
+  if n > 0:
+    print_asterisks(n - 1)  # Recursively print n-1 lines
+    print("*" * n)  # Print n asterisks on the current line
+
+# Example usage:
+print_asterisks(5)
+
+4.
+def find_largest(lst):
+  """Recursively finds the largest value in a list.
+
+  Args:
+    lst: The list of numbers.
+
+  Returns:
+    The largest number in the list.
+  """
+
+  if len(lst) == 1:
+    return lst[0]  # Base case: if the list has only one element, it's the largest
+
+  # Recursive case: compare the first element with the largest element in the rest of the list
+  largest_in_rest = find_largest(lst[1:])
+  return max(lst[0], largest_in_rest)
+
+# Example usage:
+my_list = [3, 7, 2, 9, 5]
+largest_value = find_largest(my_list)
+print("The largest value in the list is:", largest_value)
+
+5.
+def recursive_sum(numbers):
+  """Recursively calculates the sum of all numbers in a list.
+
+  Args:
+    numbers: The list of numbers.
+
+  Returns:
+    The sum of all numbers in the list.
+  """
+
+  if not numbers:  # Base case: empty list
+    return 0
+
+  # Recursive case: add the first element to the sum of the rest of the list
+  return numbers[0] + recursive_sum(numbers[1:])
+
+# Example usage:
+my_list = [1, 2, 3, 4, 5]
+sum_result = recursive_sum(my_list)
+print("The sum of the numbers is:", sum_result)
+
+6.
+
+def sum_up_to(n):
+  """Recursively calculates the sum of numbers from 1 to n.
+
+  Args:
+    n: The upper limit of the sum.
+
+  Returns:
+    The sum of numbers from 1 to n.
+  """
+
+  if n == 0:
+    return 0  # Base case: sum of numbers up to 0 is 0
+
+  # Recursive case: add n to the sum of numbers up to n-1
+  return n + sum_up_to(n - 1)
+
+# Example usage:
+result = sum_up_to(50)
+print("The sum of numbers from 1 to 50 is:", result)
+
+7.
+def power(base, exponent):
+  """Recursively calculates the power of a number.
+
+  Args:
+    base: The base number.
+    exponent: The exponent (non-negative integer).
+
+  Returns:
+    The result of base raised to the power of exponent.
+  """
+
+  if exponent == 0:
+    return 1  # Base case: any number raised to the power of 0 is 1
+  else:
+    return base * power(base, exponent - 1)  # Recursive case: multiply base by the result of base^(exponent-1)
+
+# Example usage:
+result = power(2, 4)
+print("2 raised to the power of 4 is:", result)
